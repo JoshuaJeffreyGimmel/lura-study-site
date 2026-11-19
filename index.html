@@ -50,7 +50,7 @@
   <section class="hero" id="top" aria-labelledby="hero-title">
     <div class="wrap">
       <p class="eyebrow label">Personal project / Early alpha / 0.1.0</p>
-      <h1 class="px" id="hero-title">Made for students<br>by students<span class="cursor" aria-hidden="true"></span></h1>
+      <h1 class="px" id="hero-title"><span class="h1-line">Made for students</span><br><span class="h1-line">by students<span class="cursor" aria-hidden="true"></span></span></h1>
 
       <div class="hero-grid">
         <div class="hero-copy">
@@ -121,7 +121,7 @@
   <!-- ============================== WHY ============================== -->
   <section class="why" aria-labelledby="why-title">
     <div class="wrap">
-      <div class="tile">
+      <div class="tile" data-reveal>
         <span class="tile-pixels" aria-hidden="true"><i></i><i class="off"></i><i></i><i class="off"></i><i></i><i class="off"></i><i></i><i class="off"></i><i></i></span>
         <h2 class="tile-label" id="why-title"><span class="plus" aria-hidden="true"></span>Why this exists</h2>
         <div class="tile-body">
@@ -136,27 +136,27 @@
   <section class="sec" id="what" aria-labelledby="what-title">
     <span class="vlabel" aria-hidden="true">Lura Study / 01</span>
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head" data-reveal>
         <h2 class="sec-title" id="what-title"><span class="sec-num"><span class="plus" aria-hidden="true"></span>01 /</span> <span class="sec-name px">What it is</span></h2>
       </div>
       <ol class="features" role="list">
-        <li class="feature">
+        <li class="feature" data-reveal>
           <h3><span class="f-num">01 /</span> <span class="f-name px">From your own material</span></h3>
           <p>PDFs, Word documents, Markdown and plain text. Every task cites the page or section it came from, so you can check the answer against the source.</p>
         </li>
-        <li class="feature">
+        <li class="feature" data-reveal>
           <h3><span class="f-num">02 /</span> <span class="f-name px">Your agent, not ours</span></h3>
           <p>Connect Claude Code over MCP, or any OpenAI-compatible API. The app talks only to what you set up. There is no Lura account and no Lura cloud.</p>
         </li>
-        <li class="feature">
+        <li class="feature" data-reveal>
           <h3><span class="f-num">03 /</span> <span class="f-name px">Practice that schedules itself</span></h3>
           <p>Recall and apply questions, spaced review, and a readiness view per learning goal — not just a pile of flashcards.</p>
         </li>
-        <li class="feature">
+        <li class="feature" data-reveal>
           <h3><span class="f-num">04 /</span> <span class="f-name px">A real exam simulation</span></h3>
           <p>One sitting, a timer, points and a Swiss 1–6 grade. Afterwards: a per-goal breakdown and a fix list for the days before the test.</p>
         </li>
-        <li class="feature">
+        <li class="feature" data-reveal>
           <h3><span class="f-num">05 /</span> <span class="f-name px">Labs with a real terminal</span></h3>
           <p>Optional Podman or SSH labs run real commands, checks and hints. Use them or ignore them.</p>
         </li>
@@ -168,28 +168,37 @@
   <section class="sec sec--alt" id="how" aria-labelledby="how-title">
     <span class="vlabel" aria-hidden="true">Lura Study / 02</span>
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head" data-reveal>
         <h2 class="sec-title" id="how-title"><span class="sec-num"><span class="plus" aria-hidden="true"></span>02 /</span> <span class="sec-name px">How it works</span></h2>
       </div>
       <ol class="steps" role="list">
-        <li class="step"><span class="step-num px" aria-hidden="true">01</span><p>Make a workspace and add your sources.</p></li>
-        <li class="step"><span class="step-num px" aria-hidden="true">02</span><p>Review the learning goals it extracts.</p></li>
-        <li class="step"><span class="step-num px" aria-hidden="true">03</span><p>Ask your agent for tasks, and check them against the source.</p></li>
-        <li class="step"><span class="step-num px" aria-hidden="true">04</span><p>Practice daily, then simulate the test.</p></li>
+        <li class="step" data-reveal><span class="step-num px" aria-hidden="true">01</span><p>Make a workspace and add your sources.</p></li>
+        <li class="step" data-reveal><span class="step-num px" aria-hidden="true">02</span><p>Review the learning goals it extracts.</p></li>
+        <li class="step" data-reveal><span class="step-num px" aria-hidden="true">03</span><p>Ask your agent for tasks, and check them against the source.</p></li>
+        <li class="step" data-reveal><span class="step-num px" aria-hidden="true">04</span><p>Practice daily, then simulate the test.</p></li>
       </ol>
     </div>
   </section>
+
+  <!-- Facts strip: decorative repeat of facts stated elsewhere on the page -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <ul class="marquee-group">
+        <li>Local-first</li><li>MIT</li><li>No accounts</li><li>No telemetry</li><li>127.0.0.1</li><li>Port 7421</li><li>SHA-256</li>
+      </ul>
+    </div>
+  </div>
 
   <!-- ============================== 03 SCREENS ============================== -->
   <section class="sec" id="screens" aria-labelledby="screens-title">
     <span class="vlabel" aria-hidden="true">Lura Study / 03</span>
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head" data-reveal>
         <h2 class="sec-title" id="screens-title"><span class="sec-num"><span class="plus" aria-hidden="true"></span>03 /</span> <span class="sec-name px">Screens</span></h2>
       </div>
       <div class="screens">
 
-        <figure>
+        <figure data-reveal>
           <div class="shot">
             <div class="shot-bar">
               <span class="shot-dot" aria-hidden="true"></span><span class="shot-dot" aria-hidden="true"></span><span class="shot-dot" aria-hidden="true"></span>
@@ -236,7 +245,7 @@
           <figcaption class="cap"><b>PRACTICE</b> — the question, the source it came from, your answer.</figcaption>
         </figure>
 
-        <figure>
+        <figure data-reveal>
           <div class="shot">
             <div class="shot-bar">
               <span class="shot-dot" aria-hidden="true"></span><span class="shot-dot" aria-hidden="true"></span><span class="shot-dot" aria-hidden="true"></span>
@@ -266,7 +275,7 @@
           <figcaption class="cap"><b>MATERIAL</b> — sources, learning goals and the task browser.</figcaption>
         </figure>
 
-        <figure>
+        <figure data-reveal>
           <div class="shot">
             <div class="shot-bar">
               <span class="shot-dot" aria-hidden="true"></span><span class="shot-dot" aria-hidden="true"></span><span class="shot-dot" aria-hidden="true"></span>
@@ -310,13 +319,13 @@
   <section class="sec sec--alt" id="install" aria-labelledby="install-title">
     <span class="vlabel" aria-hidden="true">Lura Study / 04</span>
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head" data-reveal>
         <h2 class="sec-title" id="install-title"><span class="sec-num"><span class="plus" aria-hidden="true"></span>04 /</span> <span class="sec-name px">Install 0.1.0</span></h2>
         <p class="install-intro">All downloads live on <a href="https://github.com/JoshuaJeffreyGimmel/lura-study/releases">GitHub Releases</a>. Each release includes <code>SHA256SUMS.txt</code> and <code>latest.json</code>.</p>
       </div>
 
       <div class="install-top">
-        <article class="panel" aria-labelledby="p-linux">
+        <article class="panel" data-reveal aria-labelledby="p-linux">
           <div class="panel-head">
             <h3 id="p-linux"><span class="panel-os px">Linux</span> <span class="panel-arch">x64</span></h3>
           </div>
@@ -340,7 +349,7 @@
         </article>
 
         <div class="install-stack">
-        <article class="panel" aria-labelledby="p-win">
+        <article class="panel" data-reveal aria-labelledby="p-win">
           <div class="panel-head">
             <h3 id="p-win"><span class="panel-os px">Windows</span> <span class="panel-arch">x64</span></h3>
           </div>
@@ -352,7 +361,7 @@
           </ol>
         </article>
 
-        <article class="panel" aria-labelledby="p-mac">
+        <article class="panel" data-reveal aria-labelledby="p-mac">
           <div class="panel-head">
             <h3 id="p-mac"><span class="panel-os px">macOS</span> <span class="panel-arch">arm64</span></h3>
           </div>
@@ -373,18 +382,18 @@
 
       <div class="install-lower">
         <div class="install-aside">
-          <div class="unsigned">
+          <div class="unsigned" data-reveal>
             <h3><span class="bang" aria-hidden="true">!</span><span class="px">Not signed — on purpose</span></h3>
             <p>0.1.0 is not code-signed. Certificates cost money this project does not have. Windows and macOS will warn you; the rpm and deb carry no GPG signature. Every download has a SHA-256, and the full source is public — verify the file or build it yourself.</p>
           </div>
 
-          <div class="reqs">
+          <div class="reqs" data-reveal>
             <h3 class="px">Requirements</h3>
             <p>64-bit OS. No Node.js needed — the app brings its own. Optional for labs: Podman (Linux) or an SSH target, and script from util-linux. Settings → Doctor tells you what is missing.</p>
           </div>
         </div>
 
-        <div class="checks">
+        <div class="checks" data-reveal>
           <h3 class="px">Check a download</h3>
           <ul class="cmd-list" role="list">
             <li class="cmd">
@@ -411,12 +420,12 @@
   <section class="sec" id="data" aria-labelledby="data-title">
     <span class="vlabel" aria-hidden="true">Lura Study / 05</span>
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sec-head" data-reveal>
         <h2 class="sec-title" id="data-title"><span class="sec-num"><span class="plus" aria-hidden="true"></span>05 / Your data</span> <span class="sec-name px">One folder. No account.</span></h2>
       </div>
 
       <div class="data-grid">
-        <div class="data-table">
+        <div class="data-table" data-reveal>
           <table>
             <caption class="sr-only">Where your data folder lives on each system</caption>
             <tbody>
@@ -435,17 +444,17 @@
             </tbody>
           </table>
         </div>
-        <div class="data-copy">
+        <div class="data-copy" data-reveal>
           <p>Workspaces, backups, logs and <code>secrets.json</code> (readable only by you) live there. The app listens on 127.0.0.1 and needs a token for every request. There is no telemetry. The update check runs only when you press it, and it only fetches <code>latest.json</code>.</p>
           <p class="backup">Back up from Settings → Data → Back Up Now.</p>
         </div>
       </div>
 
       <dl class="facts">
-        <div class="fact"><dt>Listens on</dt><dd class="px">127.0.0.1</dd></div>
-        <div class="fact"><dt>Port</dt><dd class="px">7421</dd></div>
-        <div class="fact"><dt>Accounts</dt><dd class="px">0</dd></div>
-        <div class="fact"><dt>Trackers</dt><dd class="px">0</dd></div>
+        <div class="fact" data-reveal><dt>Listens on</dt><dd class="px">127.0.0.1</dd></div>
+        <div class="fact" data-reveal><dt>Port</dt><dd class="px">7421</dd></div>
+        <div class="fact" data-reveal><dt>Accounts</dt><dd class="px">0</dd></div>
+        <div class="fact" data-reveal><dt>Trackers</dt><dd class="px">0</dd></div>
       </dl>
     </div>
   </section>
@@ -454,35 +463,35 @@
   <section class="sec sec--alt" id="faq" aria-labelledby="faq-title">
     <span class="vlabel" aria-hidden="true">Lura Study / 06</span>
     <div class="wrap faq-layout">
-      <div class="sec-head">
+      <div class="sec-head" data-reveal>
         <h2 class="sec-title" id="faq-title"><span class="sec-num"><span class="plus" aria-hidden="true"></span>06 /</span> <span class="sec-name px">FAQ</span></h2>
       </div>
       <div class="faq-list">
-        <details>
+        <details data-reveal>
           <summary><span class="q-num" aria-hidden="true">01</span><span class="q">Is it free?</span><span class="q-icon" aria-hidden="true"></span></summary>
           <div class="answer"><p>Yes. MIT-licensed, no paid tier, no account. Read it, build it, fork it.</p></div>
         </details>
-        <details>
+        <details data-reveal>
           <summary><span class="q-num" aria-hidden="true">02</span><span class="q">Do I need Claude Code?</span><span class="q-icon" aria-hidden="true"></span></summary>
           <div class="answer"><p>No. The app runs without an agent. Tasks can come from an MCP agent such as Claude Code, from an OpenAI-compatible API, or from you.</p></div>
         </details>
-        <details>
+        <details data-reveal>
           <summary><span class="q-num" aria-hidden="true">03</span><span class="q">Does my material get uploaded?</span><span class="q-icon" aria-hidden="true"></span></summary>
           <div class="answer"><p>Only to the agent or API you connect. Lura Study has no cloud and sends no telemetry.</p></div>
         </details>
-        <details>
+        <details data-reveal>
           <summary><span class="q-num" aria-hidden="true">04</span><span class="q">Why do Windows and macOS warn me?</span><span class="q-icon" aria-hidden="true"></span></summary>
           <div class="answer"><p>Because 0.1.0 is unsigned. Use More info → Run anyway on Windows, or Open Anyway in macOS Privacy &amp; Security. Verify the SHA-256 first if you like.</p></div>
         </details>
-        <details>
+        <details data-reveal>
           <summary><span class="q-num" aria-hidden="true">05</span><span class="q">How do updates work?</span><span class="q-icon" aria-hidden="true"></span></summary>
           <div class="answer"><p>Settings → About and updates → Check for updates. It tells you when a newer version exists; you download and install it over the old one. Your data stays.</p></div>
         </details>
-        <details>
+        <details data-reveal>
           <summary><span class="q-num" aria-hidden="true">06</span><span class="q">What can't 0.1.0 do?</span><span class="q-icon" aria-hidden="true"></span></summary>
           <div class="answer"><p>Image-only PDFs (no OCR yet), automatic updates, and more than one instance at a time (port 7421). Labs need Podman or SSH.</p></div>
         </details>
-        <details>
+        <details data-reveal>
           <summary><span class="q-num" aria-hidden="true">07</span><span class="q">How do I remove it?</span><span class="q-icon" aria-hidden="true"></span></summary>
           <div class="answer"><p>Uninstall the app the normal way for your OS. Your data folder stays until you delete it, so back it up first if you want to keep it.</p></div>
         </details>
@@ -495,8 +504,8 @@
 <!-- ============================== FOOTER ============================== -->
 <footer class="site-footer">
   <div class="wrap">
-    <p class="foot-mark px">Lura Study</p>
-    <div class="foot-row">
+    <p class="foot-mark px" data-reveal>Lura Study</p>
+    <div class="foot-row" data-reveal>
       <p class="foot-line">A personal project by Joshua Gimmel. Early alpha, unsigned, MIT.</p>
       <nav class="foot-links" aria-label="Footer">
         <div>
@@ -516,7 +525,7 @@
         </div>
       </nav>
     </div>
-    <div class="smallprint">
+    <div class="smallprint" data-reveal>
       <p>No cookies. No analytics. No trackers.</p>
       <p>0.1.0 · 2026</p>
     </div>

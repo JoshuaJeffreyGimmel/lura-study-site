@@ -117,8 +117,8 @@ main:focus{outline:none}
 .chip::before{content:"";width:5px;height:5px;background:var(--muted);flex:none}
 
 @media (prefers-reduced-motion: no-preference){
-  .btn,.nav a,.foot-links a,.cmd-copy{transition:background-color .16s ease,color .16s ease,border-color .16s ease}
-  .q-icon::after{transition:transform .16s ease}
+  .btn,.nav a,.foot-links a,.cmd-copy{transition:background-color .16s ease,color .16s ease,border-color .16s ease,transform .16s ease}
+  .q-icon,.q-icon::after{transition:transform .22s cubic-bezier(.2,.7,.2,1)}
 }
 
 /* ------------------------------------------------------------------
@@ -516,6 +516,7 @@ td small{display:block;margin-top:4px;font-size:13px;color:var(--muted)}
 .q-icon::before,.q-icon::after{content:"";position:absolute;background:var(--text)}
 .q-icon::before{top:6px;left:0;width:14px;height:2px}
 .q-icon::after{left:6px;top:0;width:2px;height:14px}
+details[open] .q-icon{transform:rotate(180deg)}
 details[open] .q-icon::after{transform:scaleY(0)}
 .answer{padding:0 34px 28px 64px}
 .answer p{color:var(--muted);max-width:62ch}
@@ -645,4 +646,172 @@ details[open] .q-icon::after{transform:scaleY(0)}
   .hide-xs{display:none}
   .btn--sm{padding:8px 10px;letter-spacing:.1em}
   .answer{padding-left:0}
+}
+
+/* ------------------------------------------------------------------
+   Motion & interaction
+   Progressive enhancement: without JS nothing is hidden. Everything that
+   moves sits behind prefers-reduced-motion: no-preference; hover
+   transforms also need (hover: hover). Only transform, opacity and
+   clip-path are animated.
+------------------------------------------------------------------- */
+.hero{overflow-x:clip}
+.h1-line{display:inline-block}
+
+/* header: scrolled state + progress line (classes/element from js/site.js) */
+.site-header.is-scrolled{background:rgba(6,6,6,.96);border-bottom-color:var(--line-strong)}
+.header-progress{
+  position:absolute;left:0;right:0;bottom:-1px;height:2px;
+  background:var(--text);transform:scaleX(0);transform-origin:0 50%;pointer-events:none;
+}
+/* the header is not sticky at this width, so the progress line has no job */
+@media (max-width: 640px){ .header-progress{display:none} }
+
+/* nav: underline on hover/focus, held for the section in view */
+.nav a{position:relative}
+.nav a::after{
+  content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;
+  background:currentColor;transform:scaleX(0);transform-origin:0 50%;
+}
+.nav a:hover::after,.nav a:focus-visible::after{transform:scaleX(1)}
+.nav a[aria-current]{color:var(--text)}
+.nav a[aria-current]::after{height:2px;transform:scaleX(1)}
+
+/* buttons */
+.btn .arr{display:inline-block}
+
+/* feature rows: background sweep (decoration only) */
+.feature{position:relative;isolation:isolate}
+.feature::before{
+  content:"";position:absolute;inset:0 -12px;z-index:-1;pointer-events:none;
+  background:linear-gradient(90deg, rgba(241,241,236,.05), rgba(241,241,236,0) 75%);
+  opacity:0;transform:scaleX(.4);transform-origin:0 50%;
+}
+
+/* interface preview frames: one-shot scanline on hover */
+.screens .shot{position:relative}
+.screens .shot::after{
+  content:"";position:absolute;left:0;right:0;top:0;height:40%;pointer-events:none;
+  background:linear-gradient(180deg, rgba(241,241,236,0), rgba(241,241,236,.05) 85%, rgba(241,241,236,.16));
+  opacity:0;transform:translateY(-110%);
+}
+
+/* command boxes + copy feedback */
+.cmd:hover,.cmd:focus-within{border-color:var(--line-strong)}
+.cmd-copy{position:relative}
+.cmd-copy::after{
+  content:"";position:absolute;inset:-1px;border:1px solid var(--text);border-radius:2px;
+  opacity:0;pointer-events:none;
+}
+.cmd-copy.is-copied{border-color:var(--text)}
+
+.chip{cursor:default}
+
+/* footer wordmark: offset echo wipes in behind it on hover */
+.foot-mark{position:relative;isolation:isolate}
+.foot-mark::after{
+  content:"Lura Study" / "";
+  position:absolute;inset:0;z-index:-1;pointer-events:none;
+  color:var(--line-strong);transform:translate(5px, 5px);
+  clip-path:inset(-10% 100% -10% 0);
+}
+@media (hover: hover){
+  .foot-mark:hover::after{clip-path:inset(-10% -2% -10% 0)}
+}
+
+/* facts strip (marquee); static unless js/site.js marks it live */
+.marquee{
+  overflow:hidden;margin-top:-1px;
+  padding-left:max(var(--gutter), (100% - var(--wrap)) / 2);
+  border-block:1px solid var(--line);background:var(--bg);
+  font:400 11px/1 var(--f-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+}
+.marquee-track{display:flex;width:max-content}
+.marquee-group{display:flex;flex:none}
+.marquee-group li{display:flex;align-items:center;gap:22px;padding:14px 22px 14px 0;white-space:nowrap}
+.marquee-group li::before{content:"";width:5px;height:5px;background:var(--faint);flex:none}
+
+@media screen and (prefers-reduced-motion: no-preference){
+  html{scroll-behavior:smooth}
+
+  /* load-in: eyebrow, H1 lines (stepped wipe), lead, actions, chips, visual */
+  .hero .eyebrow,.hero .lead,.hero .actions,.hero .chips,.hero-visual{
+    animation:rise .52s cubic-bezier(.2,.7,.2,1) backwards;
+  }
+  .hero .eyebrow{animation-delay:.04s}
+  .h1-line{animation:wipe .5s steps(14, end) .11s backwards}
+  .h1-line + br + .h1-line{animation-delay:.19s}
+  .hero .lead{animation-delay:.27s}
+  .hero .actions{animation-delay:.35s}
+  .hero .chips{animation-delay:.43s}
+  .hero-visual{animation-delay:.5s}
+  .hud-label > span:first-child{animation:flicker .6s steps(1, end) .95s backwards}
+  .cursor{animation:blink 1.1s steps(1, end) 1.2s infinite}
+
+  /* scroll reveals: hidden state only once js/site.js has added .js */
+  .js [data-reveal]{
+    transition:opacity .6s cubic-bezier(.2,.7,.2,1) var(--rd, 0ms),transform .6s cubic-bezier(.2,.7,.2,1) var(--rd, 0ms);
+  }
+  .js [data-reveal]:not(.is-in){opacity:0;transform:translate3d(0, 14px, 0)}
+  .js .fact dd{transition:clip-path .42s steps(8, end) calc(var(--rd, 0ms) + .15s)}
+  .js .fact:not(.is-in) dd{clip-path:inset(-20% 100% -20% 0)}
+
+  /* header */
+  .site-header{transition:background-color .2s ease,border-color .2s ease}
+  .nav a::after{transition:transform .2s cubic-bezier(.2,.7,.2,1)}
+
+  /* marquee */
+  .marquee.is-live .marquee-track{animation:marquee var(--marquee-dur, 50s) linear infinite}
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track{animation-play-state:paused}
+
+  /* FAQ answer */
+  details[open] > .answer{animation:answer-in .3s cubic-bezier(.2,.7,.2,1)}
+
+  /* copy success pulse */
+  .cmd-copy:active{transform:scale(.97)}
+  .cmd-copy.is-copied{animation:copy-pop .3s ease-out}
+  .cmd-copy.is-copied::after{animation:copy-ring .6s ease-out}
+
+  .foot-mark::after{transition:clip-path .42s steps(10, end)}
+
+  /* paused while the tab is hidden */
+  .is-hidden .cursor,.is-hidden .marquee-track{animation-play-state:paused}
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference){
+  .btn .arr{transition:transform .18s cubic-bezier(.2,.7,.2,1)}
+  .btn:hover .arr,.btn:focus-visible .arr{transform:translate(3px, -3px)}
+  .btn:active{transform:translateY(1px)}
+
+  .feature::before{transition:opacity .3s ease,transform .45s cubic-bezier(.2,.7,.2,1)}
+  .feature:hover::before{opacity:1;transform:none}
+  .f-num{transition:transform .25s cubic-bezier(.2,.7,.2,1),color .2s ease}
+  .feature:hover .f-num{transform:translateX(6px);color:var(--text)}
+
+  .screens .shot{transition:transform .28s cubic-bezier(.2,.7,.2,1),border-color .2s ease}
+  .screens figure:hover .shot{transform:translateY(-4px);border-color:#5a5a55}
+  .screens figure:hover .shot::after{animation:scan .9s cubic-bezier(.4,0,.2,1)}
+
+  .cmd{transition:border-color .2s ease}
+
+  .chip{transition:transform .2s ease,border-color .2s ease}
+  .chip:hover{transform:translateY(-1px);border-color:var(--muted)}
+}
+
+@keyframes rise{from{opacity:0;transform:translate3d(0, 14px, 0)}}
+@keyframes wipe{
+  from{clip-path:inset(-20% 100% -20% 0)}
+  to{clip-path:inset(-20% -2% -20% 0)}
+}
+@keyframes flicker{0%{opacity:0}20%{opacity:1}35%{opacity:.25}50%{opacity:1}70%{opacity:.5}85%{opacity:1}}
+@keyframes blink{50%{opacity:0}}
+@keyframes marquee{to{transform:translate3d(-50%, 0, 0)}}
+@keyframes answer-in{from{opacity:0;transform:translate3d(0, -6px, 0)}}
+@keyframes copy-pop{0%{transform:scale(.96)}55%{transform:scale(1.04)}100%{transform:none}}
+@keyframes copy-ring{0%{opacity:.9;transform:none}100%{opacity:0;transform:scale(1.16, 1.5)}}
+@keyframes scan{0%{opacity:1;transform:translateY(-110%)}80%{opacity:1}100%{opacity:0;transform:translateY(260%)}}
+
+@media print{
+  [data-reveal],.fact dd{opacity:1 !important;transform:none !important;clip-path:none !important}
 }
