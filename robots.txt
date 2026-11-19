@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lura-study.joshuagimmel.com/sitemap.xml
